@@ -2,64 +2,45 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Eriksson | Full-stack Developer</title>
+    <title>Alice Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        html { scroll-behavior: smooth; }
+        body { background-color: #0a0a0a; color: white; font-family: sans-serif; }
     </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900 leading-relaxed">
-
-    <nav class="sticky top-0 z-50 glass border-b border-zinc-200">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="font-semibold tracking-tighter text-xl">M.Eriksson</span>
-            <div class="space-x-8 text-sm font-medium text-zinc-500">
-                <a href="#about" class="hover:text-black transition">Про мене</a>
-                <a href="#projects" class="hover:text-black transition">Проєкти</a>
-                <a href="#stack" class="hover:text-black transition">Стек</a>
-            </div>
-        </div>
+<body>
+    <nav style="padding: 20px; display: flex; justify-content: space-between; background: #111;">
+        <b style="color: #8b5cf6;">ALICE.DEV</b>
+        <a href="#projects" style="color: #ccc; text-decoration: none;">Проєкти</a>
     </nav>
 
-    <header class="max-w-5xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-        <div class="flex-1">
-            <h1 class="text-5xl font-light tracking-tight leading-tight">
-                Проєктую цифрові системи з <span class="text-zinc-400 italic">архітектурною</span> точністю.
-            </h1>
-            <p class="mt-6 text-lg text-zinc-600 max-w-lg">
-                Привіт, я Марк. Full-stack розробник, який переносить досвід класичної архітектури у світ високонавантажених веб-додатків.
-            </p>
+    <div style="text-align: center; padding: 100px 20px;">
+        <h1 style="font-size: 50px; margin-bottom: 10px;">DIGITAL <span style="color: #8b5cf6;">ARTIST</span></h1>
+        <p style="color: #888; margin-bottom: 30px;">Створюю майбутнє через код та дизайн.</p>
+        
+        <div style="display: flex; gap: 20px; justify-content: center;">
+            <a href="#projects" style="background: #8b5cf6; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">
+                Дивитись проєкти
+            </a>
+            <button onclick="alert('Привіт! Напишіть мені на email: alice@dev.com')" style="background: transparent; border: 1px solid #444; color: white; padding: 15px 30px; border-radius: 50px; cursor: pointer;">
+                Контакти
+            </button>
         </div>
-        <div class="w-64 h-64 bg-zinc-200 rounded-2xl overflow-hidden shadow-2xl rotate-3">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Mark Eriksson" class="object-cover w-full h-full">
-        </div>
-    </header>
+    </div>
 
-    <section id="projects" class="max-w-5xl mx-auto px-6 py-20 border-t border-zinc-200">
-        <h2 class="text-sm uppercase tracking-widest text-zinc-400 mb-12">Обрані роботи</h2>
-        <div class="grid md:grid-cols-2 gap-12">
-            <div class="group cursor-pointer">
-                <div class="aspect-video bg-zinc-200 rounded-lg overflow-hidden mb-4">
-                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" class="group-hover:scale-105 transition duration-500">
-                </div>
-                <h3 class="text-xl font-medium">EcoPulse Dashboard</h3>
-                <p class="text-zinc-500 text-sm mt-2">Next.js, Go, PostgreSQL. Моніторинг якості повітря в реальному часі.</p>
+    <div id="projects" style="max-w: 1000px; margin: 0 auto; padding: 50px 20px;">
+        <h2 style="margin-bottom: 30px;">Мої роботи</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: #111; padding: 10px; border-radius: 15px;">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500" style="width: 100%; border-radius: 10px;">
+                <h3 style="margin-top: 10px;">Cyber Art</h3>
             </div>
-            <div class="group cursor-pointer">
-                <div class="aspect-video bg-zinc-200 rounded-lg overflow-hidden mb-4">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop" class="group-hover:scale-105 transition duration-500">
-                </div>
-                <h3 class="text-xl font-medium">Nordic E-commerce</h3>
-                <p class="text-zinc-500 text-sm mt-2">Headless Shopify + Next.js. Швидкість завантаження < 0.5с.</p>
+            <div style="background: #111; padding: 10px; border-radius: 15px;">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500" style="width: 100%; border-radius: 10px;">
+                <h3 style="margin-top: 10px;">Neural Net</h3>
             </div>
         </div>
-    </section>
-
-    <section id="stack" class="bg-white py-20 border-y border-zinc-200">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-sm uppercase tracking-widest text-zinc-400 mb-12 text-center">Технології</h2>
-            <div class="flex flex-wrap justify-center gap-10 opacity-60 grayscale hover:grayscale-0 transition duration-700">
-                <span class
+    </div>
+</body>
+</html>
