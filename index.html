@@ -2,45 +2,97 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Alice Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Animation</title>
     <style>
-        html { scroll-behavior: smooth; }
-        body { background-color: #0a0a0a; color: white; font-family: sans-serif; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .heart-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .text-particle {
+            position: absolute;
+            color: red;
+            font-size: 14px;
+            white-space: nowrap;
+            user-select: none;
+            opacity: 0;
+            animation: moveHeart 4s infinite linear;
+        }
+
+        @keyframes moveHeart {
+            0% {
+                transform: translate(var(--start-x), var(--start-y)) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--end-x), var(--end-y)) scale(1.2);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav style="padding: 20px; display: flex; justify-content: space-between; background: #111;">
-        <b style="color: #8b5cf6;">ALICE.DEV</b>
-        <a href="#projects" style="color: #ccc; text-decoration: none;">Проєкти</a>
-    </nav>
 
-    <div style="text-align: center; padding: 100px 20px;">
-        <h1 style="font-size: 50px; margin-bottom: 10px;">DIGITAL <span style="color: #8b5cf6;">ARTIST</span></h1>
-        <p style="color: #888; margin-bottom: 30px;">Створюю майбутнє через код та дизайн.</p>
-        
-        <div style="display: flex; gap: 20px; justify-content: center;">
-            <a href="#projects" style="background: #8b5cf6; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">
-                Дивитись проєкти
-            </a>
-            <button onclick="alert('Привіт! Напишіть мені на email: alice@dev.com')" style="background: transparent; border: 1px solid #444; color: white; padding: 15px 30px; border-radius: 50px; cursor: pointer;">
-                Контакти
-            </button>
-        </div>
-    </div>
+    <div class="heart-container" id="container"></div>
 
-    <div id="projects" style="max-w: 1000px; margin: 0 auto; padding: 50px 20px;">
-        <h2 style="margin-bottom: 30px;">Мої роботи</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div style="background: #111; padding: 10px; border-radius: 15px;">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500" style="width: 100%; border-radius: 10px;">
-                <h3 style="margin-top: 10px;">Cyber Art</h3>
-            </div>
-            <div style="background: #111; padding: 10px; border-radius: 15px;">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500" style="width: 100%; border-radius: 10px;">
-                <h3 style="margin-top: 10px;">Neural Net</h3>
-            </div>
-        </div>
-    </div>
+    <script>
+        const container = document.getElementById('container');
+        const totalParticles = 150; // Кількість речень
+
+        // Функція для отримання координат серця (математична формула серця)
+        function getHeartPoint(t) {
+            // t має бути від 0 до 2 * PI
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+            return { x: x * 15, y: y * 15 }; // Множимо на 15 для масштабу
+        }
+
+        for (let i = 0; i < totalParticles; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'text-particle';
+            particle.innerText = 'I love you';
+
+            // Розподіляємо точки по колу для формування серця
+            const angle = (i / totalParticles) * 2 * Math.PI;
+            const point = getHeartPoint(angle);
+
+            // Центруємо анімацію на екрані
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // Встановлюємо змінні для CSS анімації
+            particle.style.setProperty('--start-x', `${centerX}px`);
+            particle.style.setProperty('--start-y', `${centerY}px`);
+            particle.style.setProperty('--end-x', `${centerX + point.x}px`);
+            particle.style.setProperty('--end-y', `${centerY + point.y}px`);
+
+            // Випадкова затримка, щоб речення вилітали не одночасно
+            particle.style.animationDelay = `${Math.random() * 4}s`;
+            
+            container.appendChild(particle);
+        }
+
+        // Оновлення координат при зміні розміру вікна
+        window.addEventListener('resize', () => {
+            location.reload(); 
+        });
+    </script>
 </body>
 </html>
